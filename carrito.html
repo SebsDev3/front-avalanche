@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - NuezTokenMarketplace</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Agregamos el archivo CSS para el formulario -->
+    <style>
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 200px; /* Ajusta el tamaño según sea necesario */
+            height: auto;
+        }
+        .formulario {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .campo {
+            margin-bottom: 15px;
+        }
+        .campo label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .campo input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .campo button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .campo button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <header class="header-mobile">
+            <h1 class="logo">NuezTokenMarketplace</h1>
+            <!-- Coloca aquí el logo -->
+            <img src="ruta/al/logo.png" alt="Logo de NuezTokenMarketplace">
+            <!-- Fin del logo -->
+            <button class="open-menu" id="open-menu">
+                <i class="bi bi-list"></i>
+            </button>
+        </header>
+        <aside>
+            <!-- Contenido del menú lateral -->
+        </aside>
+        <main>
+            <h2 class="titulo-principal">Carrito</h2>
+            <div class="contenedor-carrito">
+                <!-- Contenido del carrito -->
+            </div>
+
+            <!-- Formulario -->
+            <div class="formulario">
+                <h2>Formulario de Registro</h2>
+                <form id="registroForm">
+                    <div class="campo">
+                        <label for="nombre">Primer Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="campo">
+                        <label for="telefono">Número de Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" required>
+                        <small>Ingrese un número de teléfono válido (10 dígitos).</small>
+                    </div>
+                    <div class="campo">
+                        <label for="correo">Correo Electrónico:</label>
+                        <input type="email" id="correo" name="correo" required>
+                    </div>
+                    <div class="campo">
+                        <label for="nequi">Cuenta Nequi:</label>
+                        <input type="text" id="nequi" name="nequi" required>
+                    </div>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            fetch('https://hackavaxbogota-server.onrender.com/sign', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Muestra un mensaje de éxito con Toastify
+                Toastify({
+                    text: "Formulario enviado correctamente",
+                    duration: 3000,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    backgroundColor: "#28a745",
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                }).showToast();
+                // Puedes hacer otras acciones con los datos recibidos aquí
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Muestra un mensaje de error con Toastify
+                Toastify({
+                    text: "Error al enviar el formulario",
+                    duration: 3000,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    backgroundColor: "#dc3545",
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                }).showToast();
+            });
+        });
+    </script>
+</body>
+</html>
+Aquí hay algunas cosas a verificar:
+
+Conexión a Toastify: Asegúrate de que la URL https://cdn.jsdelivr.net/npm/toastify-js esté accesible desde tu navegador. Puedes probar abriéndola directamente en una nueva pestaña del navegador para ver si se carga.
+
+Consola del Navegador: Abre la consola de tu navegador (F12 o Ctrl+Shift+I en la mayoría de los navegadores) y verifica si hay errores relacionados con la carga de Toastify o cualquier otro error de JavaScript.
+
+Prueba Básica de Toastify: Añade un script básico para probar si Toastify está funcionando correctamente, independiente del envío del formulario. Puedes agregar este script justo antes del cierre de la etiqueta </body>:
+
+html
+Copiar código
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Toastify({
+            text: "Toastify está funcionando correctamente",
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            backgroundColor: "#28a745",
+            stopOnFocus: true
+        }).showToast();
+    });
+</script>

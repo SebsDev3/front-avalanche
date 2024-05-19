@@ -1,0 +1,52 @@
+[
+    {
+        "id": "pan-01",
+        "titulo": "Pan de trigo integral",
+        "imagen": "./img/alimentos/pan.jpg",
+        "categoria": {
+            "nombre": "Pan",
+            "id": "pan"
+        },
+        "precio": 1.5
+    },
+    {
+        "id": "leche-01",
+        "titulo": "Leche fresca",
+        "imagen": "./img/alimentos/leche.jpg",
+        "categoria": {
+            "nombre": "Lácteos",
+            "id": "lacteos"
+        },
+        "precio": 2.0
+    },
+    {
+        "id": "manzana-01",
+        "titulo": "Manzanas",
+        "imagen": "./img/alimentos/manzanas.jpg",
+        "categoria": {
+            "nombre": "Frutas",
+            "id": "frutas"
+        },
+        "precio": 2.5
+    },
+    {
+        "id": "pollo-01",
+        "titulo": "Pechugas de pollo",
+        "imagen": "./img/alimentos/pollo.jpg",
+        "categoria": {
+            "nombre": "Carnes",
+            "id": "carnes"
+        },
+        "precio": 6.0
+    },
+    {
+        "id": "zanahoria-01",
+        "titulo": "Zanahorias frescas",
+        "imagen": "./img/alimentos/zanahorias.jpg",
+        "categoria": {
+            "nombre": "Verduras",
+            "id": "verduras"
+        },
+        "precio": 1.0
+    }
+]
